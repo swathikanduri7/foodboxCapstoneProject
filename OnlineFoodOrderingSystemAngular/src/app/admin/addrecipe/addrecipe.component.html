@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+  <app-ind></app-ind>
+  <!-- <section class="contact"> -->
+  <div class="content">
+    <h2>.</h2>
+  </div>
+  <div class="container">
+    <div class="contactFrom">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+        <h4>Add recipe(Fodd Item) for sell</h4>
+        <div style="color: red;" *ngIf="avail">
+          <h6> {{msg}}</h6>
+        </div>
+        <div class="inputBox">
+          <input type="text" name="dishname"  ngModel required #dishname="ngModel">
+          <span>Dish name</span>
+        </div>
+        <div class="inputBox" >
+          <select  name="quantity" ngModel required #quantity="ngModel">
+            <option value="small">Single</option>
+            <option value="medium">Full</option>
+            <option value="large">Jumbo</option>
+          </select>
+          <span>Choose quantity</span>
+
+        </div>
+        <div class="inputBox">
+          <input type="number" name="price"  min="1" ngModel required #price="ngModel">
+          <span>Recipe price</span>
+        </div>
+         <div class="inputBox">
+          <input type="file" name="recipepic" title="choose recipe image" (change)="selectImage($event)" ngModel required #recipepic="ngModel">
+          <!-- <span>Choose recipe pic</span> -->
+        </div>
+        <div class="inputBox">
+          <input type="submit" [disabled]="f.invalid" value="submit">
+
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- </section> -->
+</body>
+
+</html>
