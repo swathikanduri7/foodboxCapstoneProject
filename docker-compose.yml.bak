@@ -8,10 +8,11 @@ services:
   app-server:
     # Configuration for building the docker image for the backend service
     build:
-      context: polling-app-server # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+      context: foodboxBackendSpringboot # Use an image built from the specified dockerfile in the `polling-app-server` directory.
       dockerfile: Dockerfile
+    image: backendfoodbox
     ports:
-      - "3000:3000" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+      - "3030:3000" # Forward the exposed port 8080 on the container to port 8080 on the host machine
     restart: always         
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
       - backend
@@ -22,10 +23,9 @@ services:
     build:
       context: OnlineFoodOrderingSystemAngular # Use an image built from the specified dockerfile in the `polling-app-client` directory.
       dockerfile: Dockerfile
-      args:
-        REACT_APP_API_BASE_URL: http://127.0.0.1:4200
+    image: angularfoodbox     
     ports:
-      - "9080:80" # Forward the exposed port 80 on the container to port 80 on the host machine
+      - "5080:80" # Forward the exposed port 80 on the container to port 80 on the host machine
     restart: always
     depends_on:
       - app-server

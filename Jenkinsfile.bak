@@ -29,8 +29,8 @@ node {
     }
 	
 	stage('docker-compose') {
-          bat "docker-compose build"
-          bat "docker-compose up -d"
+         
+          bat "docker-compose up"
        }
 	
 	

@@ -64,3 +64,40 @@ npm install && ng serve
 ```
 
 The front-end server will start on port `4200`.
+
+
+=======================================================================================
+### using docker-compose
+#to build and push images in local repositories
+docker-compose up
+
+#to push images in local repositories to remote repository
+docker tag backendfoodbox:capstone swathikothapeta/capstone_project_1234:backendfoodbox
+docker push swathikothapeta/capstone_project_1234:backendfoodbox
+
+#to push images in local repositories to remote repository
+docker tag angularfoodbox:capstone swathikothapeta/capstone_project_1234:angularfoodbox
+docker push swathikothapeta/capstone_project_1234:angularfoodbox
+
+#to remove images from local repository
+docker-compose down
+=============================================================================
+
+using docker 
+
+cd foodboxBackendSpringboot
+and run below commands
+docker build -t="capstone-java" .
+docker run -p 3000:3000 -it --rm capstone-java
+docker stop `docker container ls | grep "capstone-java:*" | awk '{ print $1 }'`
+
+cd ../OnlineFoodOrderingSystemAngular
+and run below commands
+
+docker build -t="capstone-angular" .
+docker run -p 4200:4200 -it --rm capstone-angular
+
+docker build -t capstone-angular-image .
+docker run --name capstone-angular-container -d -p 8080:80 capstone-angular
+
+docker stop `docker container ls | grep "capstone-angular-container:*" | awk '{ print $1 }'`
