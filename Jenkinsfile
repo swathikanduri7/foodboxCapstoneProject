@@ -26,6 +26,20 @@ node {
 
       echo "Docker Image Tag Name: ${dockerImageTag}"
 
-
     }
+	
+	stages {
+       stage('docker-compose') {
+           steps {
+              bat "docker-compose build"
+              bat "docker-compose up -d"
+              ...
+           }
+       }
+   }
+   post {
+      always {
+         bat "docker-compose down || true"
+      }
+   }   
 }
