@@ -8,12 +8,12 @@ node {
     // ip address of the docker private repository(nexus)
     
     def dockerRepoUrl = "https://hub.docker.com/"
-    def dockerImageName = "hello-world-java"
+    def dockerImageName = "capstone"
     def dockerImageTag = "${dockerRepoUrl}/${dockerImageName}:${env.BUILD_NUMBER}"
     
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
-      git 'https://github.com/dstar55/docker-hello-world-spring-boot.git'
+      git 'https://github.com/swathikanduri7/foodboxCapstoneProject.git'
       // Get the Maven tool.
       // ** NOTE: This 'maven-3.6.1' Maven tool must be configured
       // **       in the global configuration.           
