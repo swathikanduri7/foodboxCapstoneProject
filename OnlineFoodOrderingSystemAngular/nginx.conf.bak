@@ -22,15 +22,15 @@ http {
         '"$http_referer" "$http_user_agent"';
 		
 		server {   
-    listen      80;
-    root        /usr/share/nginx/html;
-    index       index.html index.htm;
+			listen      80;
+			root        /usr/share/nginx/html;
+			index       index.html index.htm;
 
-    location / {
+			location / {
 
-        try_files $uri $uri/ /index.html;
+				try_files $uri $uri/ /index.html;
 
-    }
+			}
 
 }
 
