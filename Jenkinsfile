@@ -22,12 +22,15 @@ node {
   
     stage('Build Project') {
       // build project via maven
-	  cd foodboxBackendSpringboot
-       if (isUnix()) {
+	  dir ('foodboxBackendSpringboot') {
+	      if (isUnix()) {
                sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
             } else {
                bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
             }
+	  }
+	  
+      
     }
 	
 	stage('Publish Tests Results'){
